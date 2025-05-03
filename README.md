@@ -9,11 +9,19 @@ Sistema web para gestionar estudiantes y asistencias de un curso de ofimática. 
 
 ## Características Implementadas
 
-### Sistema de Autenticación
+### 1. Sistema de Autenticación
 - Login para administradores
 - Gestión de perfil de administrador
 - JWT para autenticación
 - Rutas protegidas
+
+### 2. Gestión de Estudiantes
+- Listado de estudiantes
+- Creación de nuevos estudiantes
+- Edición de información de estudiantes
+- Eliminación de estudiantes
+- Control de estado (activo/inactivo)
+- Validación de datos (DNI único, email válido)
 
 ## Credenciales por Defecto
 ```
@@ -76,22 +84,47 @@ npm install
 npm run dev
 ```
 
+## Rutas de la Aplicación
+- `/login` - Página de inicio de sesión
+- `/admin/profile` - Perfil del administrador
+- `/admin/students` - Gestión de estudiantes
+
 ## Próximas Funcionalidades
-- [ ] Gestión de estudiantes (CRUD)
-- [ ] Registro de asistencias (sábados y domingos)
+- [ ] Registro de asistencias (sábados y domingos, 8:00 - 13:00)
 - [ ] Reportes y estadísticas
 - [ ] Dashboard administrativo
 
 ## Tecnologías Utilizadas
-- Frontend:
-  - Vue 3 (Composition API)
-  - Vue Router
-  - Axios
-  - Vite
-- Backend:
-  - Node.js
-  - Express
-  - Sequelize (ORM)
-  - MySQL
-  - JWT
-  - bcrypt
+### Frontend:
+- Vue 3 (Composition API)
+- Vue Router
+- Axios
+- Vite
+- Composables para la lógica de negocio
+
+### Backend:
+- Node.js
+- Express
+- Sequelize (ORM)
+- MySQL
+- JWT para autenticación
+- bcrypt para encriptación de contraseñas
+
+## Modelos de Datos
+
+### Administrador
+- username (único)
+- email (único)
+- password (encriptado)
+- firstName
+- lastName
+- phone
+
+### Estudiante
+- dni (único)
+- firstName
+- lastName
+- email (único)
+- phone
+- status (active/inactive)
+- enrollmentDate
