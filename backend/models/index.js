@@ -11,7 +11,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// Importar y registrar el modelo Admin
+// Importar y registrar modelos
 db.Admin = require('./admin.model.js')(sequelize);
+db.Student = require('./student.model.js')(sequelize);
 
 module.exports = db;

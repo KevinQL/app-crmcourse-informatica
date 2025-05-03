@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '../views/auth/LoginView.vue';
 import ProfileView from '../views/auth/ProfileView.vue';
+import StudentListView from '../views/students/StudentListView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -20,11 +21,17 @@ const router = createRouter({
       name: 'profile',
       component: ProfileView,
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/admin/students',
+      name: 'students',
+      component: StudentListView,
+      meta: { requiresAuth: true }
     }
   ]
 });
 
-// Navegation guard
+// Navigation guard
 router.beforeEach((to, from, next) => {
   const user = localStorage.getItem('user');
   const requiresAuth = to.meta.requiresAuth;

@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./models');
 const authRoutes = require('./routes/auth.routes');
+const studentRoutes = require('./routes/student.routes');
 const createDefaultAdmin = require('./seeders/adminSeeder');
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas
 app.use('/api/auth', authRoutes);
+app.use('/api/students', studentRoutes);
 
 // Sincronizar base de datos y crear admin por defecto
 db.sequelize.sync().then(async () => {
